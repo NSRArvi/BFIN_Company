@@ -7,6 +7,7 @@ import DesignShowCase from "./DesignShowCase/DesignShowCase";
 import LaunchFeatures from "./LaunchFeatures/LaunchFeatures";
 import Container from "../../shared/Container";
 import Pricing from "../Home3/Pricing/Pricing";
+import NewPricing from "../Home3/NewPricing/NewPricing";
 
 export default function ECommerceDetails() {
   const sectionRef = useRef();
@@ -29,7 +30,8 @@ export default function ECommerceDetails() {
       <Container>
         <Hero handleScrollToSection={handleScrollToSection} />
         {/* <Pricing pricingSection={pricingSection} /> */}
-        <Pricing pricingSection={pricingSection} />
+        {/* <Pricing pricingSection={pricingSection} /> */}
+        <NewPricing pricingSection={pricingSection} />
         <Features sectionRef={sectionRef} />
         <FreeWebBuilderHero handleScrollToPricing={handleScrollToPricing} />
         <DesignShowCase />

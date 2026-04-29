@@ -10,15 +10,17 @@ import SiteShowCase from "./SiteShowcase/SiteShowcase";
 import SosayPromo from "./SosayPromo/SosayPromo";
 import FreeGifts from "./FreeGifts/FreeGifts";
 import BfiniteWeb3Hero from "./Scottypumpkin/Bfiniteweb3hero";
+import NewPricing from "./NewPricing/NewPricing";
 
 export default function Home3() {
   return (
     <div className="font-inter">
-      <BfiniteWeb3Hero/>
+      <BfiniteWeb3Hero />
       {/* <Hero /> */}
       {/* <Dashboard /> */}
       <SiteShowCase />
-      <Pricing />
+      {/* <Pricing /> */}
+      <NewPricing />
       <FreeGifts />
       <PremiumPricing />
       <Overview />
