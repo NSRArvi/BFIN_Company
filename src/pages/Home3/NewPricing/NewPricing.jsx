@@ -77,7 +77,7 @@ export default function NewPricing({ pricingSection }) {
         {/* Section Title */}
         <div className="text-center">
           <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1 font-sora text-[11px] font-semibold uppercase tracking-widest text-primary">
-            e-Bfinit Ecommerce Pricing
+            Scotty pumpkin online shop creator
           </span>
           <h2 className="mt-4 font-sora text-3xl font-bold leading-tight text-dark md:text-4xl">
             Plans that grow with your business

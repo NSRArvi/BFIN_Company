@@ -116,7 +116,7 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
             <hr className="my-4 border-softGray" />
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <div>
                 <p className="text-[10.5px] text-gray-600">Stores</p>
                 <p className="mt-0.5 text-sm font-semibold text-dark">
@@ -127,12 +127,6 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
                 <p className="text-[10.5px] text-gray-600">Products</p>
                 <p className="mt-0.5 text-sm font-semibold text-dark">
                   {product_limit ?? "Unlimited"}
-                </p>
-              </div>
-              <div>
-                <p className="text-[10.5px] text-gray-600">Storage</p>
-                <p className="mt-0.5 text-sm font-semibold text-dark">
-                  {max_storage ? `${max_storage} GB` : "Unlimited"}
                 </p>
               </div>
             </div>

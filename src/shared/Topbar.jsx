@@ -4,7 +4,7 @@ import { CgClose } from "react-icons/cg";
 import { FaBars } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
-import logo from "../assets/logo/e-bfinit-new-3.png";
+import logo from "../assets/logo/scotty.webp";
 import { menuItems } from "../data/menuItems";
 import Container from "./Container";
 
@@ -118,8 +118,13 @@ export default function Topbar() {
           className={`relative flex items-center justify-between py-4 text-black`}
         >
           {/* logo here  */}
-          <Link onClick={toggleSubMenu} to={"/"}>
-            <img src={logo} className="h-5 md:h-7" alt="" loading="lazy" />
+          <Link
+            onClick={toggleSubMenu}
+            to={"/"}
+            className="inline-flex items-center gap-2 text-2xl font-semibold"
+          >
+            <img src={logo} className="h-5 md:h-11" alt="" loading="lazy" />
+            Scotty Pumpkin
           </Link>
           {/* desktop view  */}
           <div className="hidden lg:flex lg:items-center lg:gap-8">
