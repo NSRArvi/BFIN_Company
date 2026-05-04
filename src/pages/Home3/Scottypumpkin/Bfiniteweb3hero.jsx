@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { LuArrowRight, LuGlobe, LuLayers } from "react-icons/lu";
 import Container from "../../../shared/Container";
 import scottyLogo from "../../../assets/logo/scotty.webp";
+import logo from "../../../assets/logo/e-bfinit-new-3.png";
 
 export default function BfiniteWeb3Hero() {
   return (
@@ -73,12 +74,15 @@ export default function BfiniteWeb3Hero() {
           </a>
 
           {/* Title */}
-          <h1 className="mt-6 text-balance text-center font-sora text-4xl font-bold md:text-6xl">
-            Bfinit
-          </h1>
+          {/* <h1 className="mt-6 text-balance text-center font-sora text-4xl font-bold md:text-6xl text-primary">
+            e-Bfinit
+          </h1> */}
+          <div>
+            <img src={logo} alt="e-Bfinit Logo" className="h-10" />
+          </div>
 
           {/* Subtitle */}
-          <p className="mt-3 text-balance text-center font-sora text-lg font-medium text-dark/70 md:text-2xl">
+          <p className="mt-6 text-balance text-center font-sora text-lg font-medium text-dark/70 md:text-2xl">
             Build, sell & market your business within the{" "}
             <span className="relative inline-block">
               <span className="relative z-10 px-1">
