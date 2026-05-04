@@ -2,9 +2,14 @@ import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import formatPrice from "../../utils/formatPrice";
 import { getSpumpSavings } from "../../utils/getSpumpSavings";
+import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 export default function EcomPricingCard3({ pack, selectedDuration }) {
+  const { isAuthenticated } = useAuth();
+
   const {
+    id,
     badge,
     package_type_label,
     package_name,
@@ -13,7 +18,6 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
     description,
     max_store,
     product_limit,
-    max_storage,
   } = pack;
 
   const { selected_month_price } = pricing;
@@ -88,15 +92,20 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
               Billed {isYearSelected ? "yearly" : "monthly"} · cancel anytime
             </p>
 
-            <button
-              className={`mt-5 w-full rounded-xl py-2.5 text-sm font-bold transition-colors duration-150 ${
+            <Link
+              to={
+                isAuthenticated
+                  ? `/checkout/packages/${id}/${selectedDuration}`
+                  : "/login"
+              }
+              className={`mt-5 block w-full rounded-xl py-2.5 text-center text-sm font-bold transition-colors duration-150 ${
                 badge
                   ? "bg-primary text-white hover:bg-primary/90"
                   : "border-[1.5px] border-primary bg-white text-primary hover:bg-primary/5"
               }`}
             >
               Get Started
-            </button>
+            </Link>
 
             <p className="mt-2 text-[11px] text-gray-600">
               Or pay with{" "}

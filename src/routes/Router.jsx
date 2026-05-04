@@ -38,6 +38,10 @@ import Hardwares from "../pages/Hardwares/Hardwares";
 import Home3 from "../pages/Home3/Home3";
 import EcomEnterprisePack from "../pages/EcomEnterprisePack/EcomEnterprisePack";
 import ScottyPumpkinPage from "../pages/Home3/Scottypumpkin/Scottypumpkinpage";
+import Checkout from "../pages/Checkout";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -114,6 +118,14 @@ export const router = createBrowserRouter([
         element: <ECommerceDetails />,
       },
       {
+        path: "/checkout/packages/:id/:duration",
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/ecommerce-enterprise-pack",
         element: <EcomEnterprisePack />,
       },
@@ -172,6 +184,14 @@ export const router = createBrowserRouter([
       {
         path: "/scotty-pumpkin",
         element: <ScottyPumpkinPage />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

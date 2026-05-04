@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import Container from "../../../shared/Container";
 import { ECOM_BASE_URL } from "../../../config";
 import EcomPricingCard3 from "../../../components/Cards/EcomPricingCard3";
-
-const durations = [
-  { id: 0, month: 1, label: "Monthly" },
-  { id: 1, month: 12, label: "Yearly" },
-];
+import { durations } from "../../../utils/packagesHelper";
 
 const currencies = [
   {

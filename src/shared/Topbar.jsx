@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiChevronDown, BiChevronRight, BiChevronUp } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import { FaBars } from "react-icons/fa";
@@ -6,13 +6,17 @@ import { Link, useLocation } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
 import logo from "../assets/logo/scotty.webp";
 import { menuItems } from "../data/menuItems";
+import useAuth from "../hooks/useAuth";
 import Container from "./Container";
 
 export default function Topbar() {
   const { pathname } = useLocation();
+  const { user, isAuthenticated, logout } = useAuth();
   const [showNav, setShowNav] = useState(false);
   const [showChild, setShowChild] = useState("");
   const [showSubMenu, setShowSubMenu] = useState(null);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
   const [hostingProducts, setHostingProducts] = useState([]);
   const [updatedMenuItems, setUpdatedMenuItems] = useState(menuItems);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -107,6 +111,17 @@ export default function Topbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  // Close user dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -217,14 +232,75 @@ export default function Topbar() {
             </button>
           )}
 
-          {/* desktop mode contact button */}
-          <Link
-            to="/contact"
-            className={`group hidden h-fit items-center gap-2.5 rounded-full border px-4 py-2 font-medium shadow transition-all duration-300 ease-linear lg:flex ${isScrolled || !isHome ? "border-primary/25 bg-[#242D2B] text-white hover:bg-[#090B0B]" : "border-transparent bg-white text-black hover:bg-softGray"}`}
-          >
-            Contact{" "}
-            <MdArrowOutward className="duration-300 ease-linear group-hover:rotate-45" />
-          </Link>
+          {/* desktop mode login + contact buttons */}
+          <div className="hidden items-center gap-3 lg:flex">
+            {isAuthenticated ? (
+              /* ── User avatar + dropdown ── */
+              <div className="relative" ref={userMenuRef}>
+                <button
+                  onClick={() => setUserMenuOpen((p) => !p)}
+                  className="flex items-center gap-2 rounded-full border border-[#e4e4e7] bg-white px-3 py-1.5 text-sm font-medium text-[#09090b] shadow-sm transition-all duration-200 hover:bg-[#f4f4f5]"
+                >
+                  {/* Avatar initials */}
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white">
+                    {user?.name?.charAt(0).toUpperCase() ?? "U"}
+                  </span>
+                  <span className="max-w-[120px] truncate">{user?.name}</span>
+                  <BiChevronDown
+                    className={`text-lg text-[#71717a] transition-transform duration-200 ${userMenuOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {userMenuOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-52 rounded-xl border border-[#e4e4e7] bg-white py-1 shadow-lg">
+                    {/* User info header */}
+                    <div className="border-b border-[#f4f4f5] px-4 py-3">
+                      <p className="truncate text-sm font-semibold text-[#09090b]">
+                        {user?.name}
+                      </p>
+                      <p className="truncate text-xs text-[#71717a]">
+                        {user?.email}
+                      </p>
+                    </div>
+                    {/* My Orders */}
+                    <Link
+                      to="/my-orders"
+                      onClick={() => setUserMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-2.5 text-sm text-[#09090b] transition-colors hover:bg-[#f4f4f5]"
+                    >
+                      My Orders
+                    </Link>
+                    {/* Divider */}
+                    <div className="my-1 border-t border-[#f4f4f5]" />
+                    {/* Logout */}
+                    <button
+                      onClick={() => {
+                        logout();
+                        setUserMenuOpen(false);
+                      }}
+                      className="flex w-full items-center gap-2 px-4 py-2.5 text-sm text-[#ef4444] transition-colors hover:bg-[#fef2f2]"
+                    >
+                      Log out
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className={`h-fit rounded-full border px-4 py-2 font-medium transition-all duration-300 ease-linear ${isScrolled || !isHome ? "border-primary/25 text-black hover:bg-gray-100" : "border-white/40 bg-white/20 text-black hover:bg-white/40"}`}
+              >
+                Login
+              </Link>
+            )}
+            <Link
+              to="/contact"
+              className={`group flex h-fit items-center gap-2.5 rounded-full border px-4 py-2 font-medium shadow transition-all duration-300 ease-linear ${isScrolled || !isHome ? "border-primary/25 bg-[#242D2B] text-white hover:bg-[#090B0B]" : "border-transparent bg-white text-black hover:bg-softGray"}`}
+            >
+              Contact{" "}
+              <MdArrowOutward className="duration-300 ease-linear group-hover:rotate-45" />
+            </Link>
+          </div>
         </section>
       </Container>
 
@@ -319,13 +395,43 @@ export default function Topbar() {
               )}
             </div>
           ))}
-          <Link
-            to={"/contact"}
-            onClick={() => setShowNav(!showNav)}
-            className="w-fit rounded bg-primary px-4 py-2 text-white shadow"
-          >
-            Contact Us
-          </Link>
+          <div className="flex gap-3">
+            {isAuthenticated ? (
+              <>
+                <Link
+                  to="/my-orders"
+                  onClick={() => setShowNav(!showNav)}
+                  className="w-fit rounded border border-primary px-4 py-2 text-primary shadow"
+                >
+                  My Orders
+                </Link>
+                <button
+                  onClick={() => {
+                    logout();
+                    setShowNav(false);
+                  }}
+                  className="w-fit rounded border border-[#ef4444] px-4 py-2 text-[#ef4444] shadow"
+                >
+                  Log out
+                </button>
+              </>
+            ) : (
+              <Link
+                to={"/login"}
+                onClick={() => setShowNav(!showNav)}
+                className="w-fit rounded border border-primary px-4 py-2 text-primary shadow"
+              >
+                Login
+              </Link>
+            )}
+            <Link
+              to={"/contact"}
+              onClick={() => setShowNav(!showNav)}
+              className="w-fit rounded bg-primary px-4 py-2 text-white shadow"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       )}
     </nav>
