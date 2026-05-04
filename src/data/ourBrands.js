@@ -2,7 +2,6 @@ import wap from "../assets/logo/bitss-wap.png";
 import cContactForm from "../assets/logo/bitss-c.png";
 import vWar from "../assets/logo/bitss-vwar.png";
 import pensaki from "../assets/Pensaki-Blackboard.png";
-import bfinitEcommerce from "../assets/logo/bfinit.png";
 import omadaHrPayroll from "../assets/logo/omada-hr-payroll.png";
 import omadaProjectManager from "../assets/logo/omada-project-manager.png";
 import clasicoPayslips from "../assets/logo/clasico-payslips.png";
@@ -10,10 +9,26 @@ import ifgaapAccounting from "../assets/logo/ifgaap-accounting.png";
 import ifgaapInvoicing from "../assets/logo/ifgaap-invoicing.png";
 import hPanel from "../assets/logo/hpanel.png";
 import bobosoho from "../assets/logo/bobosoho.jpg";
+import scotty from "../assets/logo/scotty.webp";
+import spump from "../assets/logo/spump_logo.png";
 import whiteLabel from "../assets/white-label.png";
 import sosay from "../assets/Sosay.png";
 
 export const ourBrands = [
+  {
+    title: "Scotty Pumpkin Online Shop Creator",
+    details:
+      "Real-time malware detection, neutralization and detailed modification tracking.",
+    websiteUrl: "/bfinit-ecomerce-platform",
+    icon: scotty,
+  },
+  {
+    title: "SPUMP Market",
+    details:
+      "Real-time malware detection, neutralization and detailed modification tracking.",
+    websiteUrl: "https://sosay.org/",
+    icon: spump,
+  },
   {
     title: "Bitss WAP Login Protection for Website",
     details: "Secure login, blacklist IPs and prevent hacking or data theft.",
@@ -37,13 +52,6 @@ export const ourBrands = [
       "https://www.youtube.com/playlist?list=PLF-ORj4TJbANj5Wws5m2FS1sB2FdJmMQX",
     websiteUrl: "https://bitss.one/products",
     icon: vWar,
-  },
-  {
-    title: "BFINIT E-commerce",
-    details:
-      "Real-time malware detection, neutralization and detailed modification tracking.",
-    websiteUrl: "/bfinit-ecomerce-platform",
-    icon: bfinitEcommerce,
   },
   {
     title: "BFINIT hPanel Hosting",

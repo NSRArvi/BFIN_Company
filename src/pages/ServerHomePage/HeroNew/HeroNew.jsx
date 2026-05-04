@@ -3,7 +3,7 @@ import { IoIosSpeedometer } from "react-icons/io";
 
 export default function HeroNew() {
   return (
-    <div className="px-5 py-10 text-primary md:container md:mx-auto md:py-20">
+    <div className="px-5 py-12 text-primary md:container md:mx-auto md:py-24">
       <div className="flex flex-col items-end justify-between md:flex-row">
         <h1 className="font-urbanist text-4xl font-bold">
           Excellent Hosting Solutions

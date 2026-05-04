@@ -4,7 +4,7 @@ import { CgClose } from "react-icons/cg";
 import { FaBars } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
-import logo from "../assets/logo/e-bfinit-new-3.png";
+import logo from "../assets/logo/eblogo.png";
 import { menuItems } from "../data/menuItems";
 import Container from "./Container";
 
@@ -123,7 +123,7 @@ export default function Topbar() {
             to={"/"}
             className="inline-flex items-center gap-2 text-2xl font-semibold"
           >
-            <img src={logo} className="h-5 md:h-10" alt="" loading="lazy" />
+            <img src={logo} className="h-6 md:h-8" alt="" loading="lazy" />
             {/* Scotty Pumpkin */}
           </Link>
           {/* desktop view  */}
@@ -220,7 +220,7 @@ export default function Topbar() {
           {/* desktop mode contact button */}
           <Link
             to="/contact"
-            className={`group hidden h-fit items-center gap-2.5 rounded-full border px-4 py-2 font-medium shadow transition-all duration-300 ease-linear lg:flex ${isScrolled || !isHome ? "border-primary/25 bg-[#242D2B] text-white hover:bg-[#090B0B]" : "border-transparent bg-white text-black hover:bg-softGray"}`}
+            className={`group hidden h-fit items-center gap-2.5 rounded-full border px-4 py-2 font-medium shadow transition-all duration-300 ease-linear lg:flex ${isScrolled || !isHome ? "border-primary/25 bg-[#242D2B] text-white hover:bg-[#090B0B]" : "border-transparent bg-primary text-white hover:bg-primary/90"}`}
           >
             Contact{" "}
             <MdArrowOutward className="duration-300 ease-linear group-hover:rotate-45" />
