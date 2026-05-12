@@ -20,7 +20,7 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
     product_limit,
   } = pack;
 
-  const { selected_month_price } = pricing;
+  const { total_base_price } = pricing || {};
 
   const [showFullDesc, setShowFullDesc] = useState(false);
   const isYearSelected = selectedDuration === 12;
@@ -33,10 +33,9 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
 
   const spumpDiscountPercent = isYearSelected ? 30 : 10;
 
-  const spumpSavings = getSpumpSavings(
-    selected_month_price,
-    spumpDiscountPercent,
-  );
+  const spumpSavings = total_base_price
+    ? getSpumpSavings(total_base_price, spumpDiscountPercent)
+    : "0";
 
   return (
     <div
@@ -82,7 +81,7 @@ export default function EcomPricingCard3({ pack, selectedDuration }) {
                 €
               </span>
               <span className="text-[42px] font-extrabold leading-none text-dark">
-                {formatPrice(selected_month_price)}
+                {formatPrice(total_base_price)}
               </span>
               <span className="text-zinc-400 mb-1.5 ml-1 text-xs">
                 {isYearSelected ? "/yr" : "/mo"}

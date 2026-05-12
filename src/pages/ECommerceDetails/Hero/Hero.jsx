@@ -25,58 +25,22 @@ export default function Hero({ handleScrollToSection }) {
       <div className="mx-auto max-w-7xl py-14 sm:px-6 md:py-20 lg:px-8">
         <div className="flex flex-col-reverse items-center gap-10 md:flex-row md:gap-12">
           {/* ── LEFT — COPY ── */}
-          <div className="flex w-full flex-col items-center md:w-1/2 md:items-start">
+          <div className="w-full md:w-1/2">
             {/* Scotty Pumpkin — vertical logo block */}
             <a
               href="https://scottypumpkin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group mb-7 flex flex-col items-center gap-1.5 transition-all duration-200 md:items-start"
             >
-              {/* Logo with layered glow */}
-              <span className="relative">
-                <img
-                  src={scottyLogo}
-                  alt="Scotty Pumpkin"
-                  className="h-16 w-16 rounded-full object-cover transition-transform duration-200 group-hover:scale-105"
-                  style={{
-                    border: "2.5px solid #F97316",
-                    boxShadow:
-                      "0 0 0 4px rgba(249,115,22,0.12), 0 0 20px rgba(249,115,22,0.35)",
-                  }}
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                    e.currentTarget.nextElementSibling.style.display = "flex";
-                  }}
-                />
-                <span
-                  className="hidden h-16 w-16 items-center justify-center rounded-full text-3xl"
-                  style={{
-                    border: "2.5px solid #F97316",
-                    boxShadow:
-                      "0 0 0 4px rgba(249,115,22,0.12), 0 0 20px rgba(249,115,22,0.35)",
-                    background: "#fff7ed",
-                  }}
-                >
-                  🎃
-                </span>
-              </span>
+              {/* Logo — large, with layered glow rings */}
+              <img src={scottyLogo} alt="Scotty Pumpkin" className="h-24" />
 
               {/* Label beneath logo */}
-              <span className="flex flex-col items-center leading-tight md:items-start">
-                <span
-                  className="text-xs font-semibold uppercase"
-                  style={{
-                    color: "rgba(194,87,10,0.50)",
-                    letterSpacing: "0.12em",
-                  }}
-                >
+              <span className="flex flex-col leading-tight">
+                <span className="text-xs font-semibold uppercase tracking-widest">
                   Part of the
                 </span>
-                <span
-                  className="text-sm font-bold transition-colors duration-200 group-hover:text-orange-600"
-                  style={{ color: "#C2570A" }}
-                >
+                <span className="text-sm font-bold text-orange-600">
                   Scotty Pumpkin Web3 Ecosystem
                 </span>
               </span>
@@ -84,7 +48,7 @@ export default function Hero({ handleScrollToSection }) {
 
             {/* Headline */}
             <h1
-              className="text-balance text-center font-sora text-3xl font-bold leading-tight md:text-left md:text-5xl"
+              className="text-balance text-center font-sora text-3xl font-bold leading-tight md:text-left md:text-5xl mt-6"
               style={{
                 color: "#0F172A",
                 letterSpacing: "-0.025em",

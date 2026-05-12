@@ -42,6 +42,8 @@ import Checkout from "../pages/Checkout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import PrivateRoute from "./PrivateRoute";
+import OrderConfirmationPage from "../pages/OrderConfirmation";
+import MyOrders from "../pages/MyOrders";
 
 export const router = createBrowserRouter([
   {
@@ -122,6 +124,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Checkout />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/order-confirmation/:orderId/:invoiceId",
+        element: (
+          <PrivateRoute>
+            <OrderConfirmationPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-orders",
+        element: (
+          <PrivateRoute>
+            <MyOrders />
           </PrivateRoute>
         ),
       },

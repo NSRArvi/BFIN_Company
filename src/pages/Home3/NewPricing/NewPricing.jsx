@@ -2,7 +2,13 @@ import { useEffect, useState } from "react";
 import Container from "../../../shared/Container";
 import { ECOM_BASE_URL } from "../../../config";
 import EcomPricingCard3 from "../../../components/Cards/EcomPricingCard3";
-import { durations } from "../../../utils/packagesHelper";
+import scottyLogo from "../../../assets/logo/scotty.webp";
+import spumpLogo from "../../../assets/logo/spump_logo.png";
+
+const durations = [
+  { id: 0, month: 1, label: "Monthly" },
+  { id: 1, month: 12, label: "Yearly" },
+];
 
 const currencies = [
   {
@@ -10,7 +16,7 @@ const currencies = [
     label: "Euro",
     symbol: "€",
     icon: (
-      <span className="flex h-4 w-4 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+      <span className="flex size-8 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
         €
       </span>
     ),
@@ -21,7 +27,7 @@ const currencies = [
     icon: (
       <img
         src="https://scottypumpkin.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero.ecd1dcc2.png&w=640&q=75"
-        className="h-4 w-4 rounded-full"
+        className="size-8 rounded-full"
       />
     ),
   },
@@ -31,7 +37,7 @@ const currencies = [
     icon: (
       <img
         src="https://usfranc.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.bdd0bb3c.webp&w=640&q=100"
-        className="h-4 w-4 rounded-full"
+        className="size-8 rounded-full"
       />
     ),
   },
@@ -41,7 +47,7 @@ const currencies = [
     icon: (
       <img
         src="https://assets.coingecko.com/coins/images/6319/small/usdc.png"
-        className="h-4 w-4 rounded-full"
+        className="size-8 rounded-full"
       />
     ),
   },
@@ -72,6 +78,13 @@ export default function NewPricing({ pricingSection }) {
       <Container>
         {/* Section Title */}
         <div className="text-center">
+          <div className="flex justify-center">
+            <img
+              src={spumpLogo}
+              className="size-32"
+              alt="Scotty Pumpkin Logo"
+            />
+          </div>
           <span className="inline-block rounded-full border border-primary/20 bg-primary/5 px-4 py-1 font-sora text-[11px] font-semibold uppercase tracking-widest text-primary">
             Scotty pumpkin online shop creator
           </span>
@@ -82,9 +95,6 @@ export default function NewPricing({ pricingSection }) {
             <span className="text-primary">medium</span> to{" "}
             <span className="text-primary">enterprise</span>
           </h2>
-          <p className="mt-3 font-sora text-sm text-gray-400">
-            No hidden fees. Cancel anytime. Upgrade as you grow.
-          </p>
         </div>
 
         {/* Duration + We Accept — single row */}
@@ -107,19 +117,19 @@ export default function NewPricing({ pricingSection }) {
           </div>
 
           {/* We Accept */}
-          <div className="flex items-center gap-2.5">
-            <span className="font-sora text-[10px] font-bold uppercase tracking-widest text-gray-400">
+          <div className="flex flex-col items-center gap-2.5">
+            <p className="font-sora text-sm uppercase tracking-widest text-gray-400">
               We accept
-            </span>
-            <div className="flex items-center gap-1.5">
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-1.5">
               {currencies.map((currency) => (
                 <div
                   key={currency.id}
                   title={currency.label}
-                  className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-2.5 py-1.5"
+                  className="flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-4 py-2"
                 >
-                  {currency.icon}
-                  <span className="font-sora text-xs font-semibold text-gray-600">
+                  <span>{currency.icon}</span>
+                  <span className="font-sora text-sm font-semibold text-gray-600">
                     {currency.label}
                   </span>
                   {(currency.id === "spump" || currency.id === "usff") && (
@@ -137,10 +147,10 @@ export default function NewPricing({ pricingSection }) {
         <hr className="my-6 border-gray-200" />
 
         {/* Web3 Ecosystem note */}
-        <div className="flex items-center justify-center gap-3">
+        {/* <div className="flex items-center justify-center gap-3">
           <img
-            src="https://scottypumpkin.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhero.ecd1dcc2.png&w=640&q=75"
-            className="h-8 w-8 shrink-0 rounded-full border border-gray-200"
+            src={scottyLogo}
+            className="size-16"
             alt="SPUMP"
           />
           <div>
@@ -159,7 +169,7 @@ export default function NewPricing({ pricingSection }) {
               up to <span className="font-semibold text-primary">30%</span>
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* Pricing Grid */}
         <div className="mt-24 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
@@ -174,6 +184,10 @@ export default function NewPricing({ pricingSection }) {
                 />
               ))}
         </div>
+
+        <p className="mt-10 text-center font-sora text-sm text-gray-400">
+          No hidden fees. Cancel anytime. Upgrade as you grow.
+        </p>
       </Container>
     </section>
   );

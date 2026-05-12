@@ -6,6 +6,7 @@ import {
   Sparkles,
   Copy,
   CheckCheck,
+  Lock,
 } from "lucide-react";
 import stripeIcon from "../../assets/icons/stripe.png";
 
@@ -63,8 +64,11 @@ export default function OrderDetails({
   paymentMethod,
   currencies = [],
   bankInfo,
+  currencyId,
+  onCurrencyChange,
+  isSubmitting = false,
+  readOnly = false,
 }) {
-  const [currencyId, setCurrencyId] = useState(currencies[0]?.id ?? "eur");
   const [localPayment, setLocalPayment] = useState("stripe");
 
   const activePayment = paymentMethod ?? localPayment;
@@ -160,7 +164,7 @@ export default function OrderDetails({
                     name="currency"
                     value={c.id}
                     checked={active}
-                    onChange={() => setCurrencyId(c.id)}
+                    onChange={() => onCurrencyChange?.(c.id)}
                     className="sr-only"
                   />
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center">
@@ -327,19 +331,22 @@ export default function OrderDetails({
           </div>
         </div>
 
-        {/* Submit */}
-        <button
-          type="submit"
-          className="w-full rounded-xl bg-[#186BB5] py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#145fa0] active:scale-[0.99]"
-        >
-          Place Order
-        </button>
+        {/* Submit — hidden in readOnly (card entry) step */}
+        {!readOnly && (
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full rounded-xl bg-[#186BB5] py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#145fa0] active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {isSubmitting ? "Processing…" : "Place Order"}
+          </button>
+        )}
       </div>
 
       {/* Footer */}
       <div className="border-t border-[#D6E4F0] bg-[#EBF2FA] px-5 py-3">
         <p className="text-center text-[11px] text-[#8FADC8]">
-          🔒 Secure checkout · Cancel anytime
+          <Lock /> Secure checkout · Cancel anytime
         </p>
       </div>
     </div>

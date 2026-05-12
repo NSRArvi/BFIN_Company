@@ -131,7 +131,7 @@ export default function ScottyPumpkinPage() {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <PillarCard
               icon={LuShoppingCart}
-              title="E-Bfinit"
+              title="e-Bfinit"
               subtitle="Ecommerce Builder — Create, manage, and grow your professional online store."
               color="border-primary/20"
             />

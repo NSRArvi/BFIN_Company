@@ -4,7 +4,7 @@ import { CgClose } from "react-icons/cg";
 import { FaBars } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import { MdArrowOutward } from "react-icons/md";
-import logo from "../assets/logo/scotty.webp";
+import logo from "../assets/logo/eblogo.png";
 import { menuItems } from "../data/menuItems";
 import useAuth from "../hooks/useAuth";
 import Container from "./Container";
@@ -138,8 +138,8 @@ export default function Topbar() {
             to={"/"}
             className="inline-flex items-center gap-2 text-2xl font-semibold"
           >
-            <img src={logo} className="h-5 md:h-11" alt="" loading="lazy" />
-            Scotty Pumpkin
+            <img src={logo} className="h-6 md:h-8" alt="" loading="lazy" />
+            {/* Scotty Pumpkin */}
           </Link>
           {/* desktop view  */}
           <div className="hidden lg:flex lg:items-center lg:gap-8">
@@ -239,7 +239,7 @@ export default function Topbar() {
               <div className="relative" ref={userMenuRef}>
                 <button
                   onClick={() => setUserMenuOpen((p) => !p)}
-                  className="flex items-center gap-2 rounded-full border border-[#e4e4e7] bg-white px-3 py-1.5 text-sm font-medium text-[#09090b] shadow-sm transition-all duration-200 hover:bg-[#f4f4f5]"
+                  className="flex items-center gap-2 rounded-full border border-[#e4e4e7] bg-white px-3 py-1.5 text-sm font-medium text-[#09090b] transition-all duration-200 hover:bg-[#f4f4f5]"
                 >
                   {/* Avatar initials */}
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white">
