@@ -4,7 +4,7 @@ import { BsInstagram, BsLinkedin, BsYoutube } from "react-icons/bs";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import logo from "../assets/bfin.png";
+import logo from "../assets/logo/eblogo.png";
 
 export default function Bottombar() {
   const [hostingProducts, setHostingProducts] = useState([]);
@@ -157,17 +157,14 @@ export default function Bottombar() {
           <div className="flex flex-col gap-4 md:gap-8">
             <Link
               to={"/"}
-              className="flex w-fit items-center rounded-xl bg-white pr-2"
+              className="flex w-fit items-center rounded-xl bg-white p-4"
             >
               <img
                 src={logo}
-                className="h-[40px] md:h-[80px]"
+                className="h-6 md:h-8"
                 alt=""
                 loading="lazy"
               />
-              <span className="text-xl font-extrabold text-primary">
-                BFINIT
-              </span>
             </Link>
             <p>
               BFIN IT to fuel your growth goals. We build world-class digital

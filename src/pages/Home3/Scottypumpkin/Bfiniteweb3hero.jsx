@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { LuArrowRight, LuGlobe, LuLayers } from "react-icons/lu";
 import Container from "../../../shared/Container";
 import scottyLogo from "../../../assets/logo/scotty.webp";
+import logo from "../../../assets/logo/e-bfinit-new-3.png";
 
 export default function BfiniteWeb3Hero() {
   return (
@@ -16,69 +17,21 @@ export default function BfiniteWeb3Hero() {
             className="group mb-8 flex flex-col items-center gap-2 transition-all duration-200"
           >
             {/* Logo — large, with layered glow rings */}
-            <span className="relative">
-              {/* outermost pulse ring */}
-              <span
-                className="absolute inset-0 rounded-full"
-                style={{
-                  boxShadow: "0 0 0 6px rgba(249,115,22,0.10)",
-                  borderRadius: "50%",
-                }}
-              />
-              <img
-                src={scottyLogo}
-                alt="Scotty Pumpkin"
-                className="relative h-16 w-16 rounded-full object-cover transition-transform duration-200 group-hover:scale-105"
-                style={{
-                  border: "2.5px solid #F97316",
-                  boxShadow:
-                    "0 0 0 4px rgba(249,115,22,0.12), 0 0 20px rgba(249,115,22,0.35)",
-                }}
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  e.currentTarget.nextElementSibling.style.display = "flex";
-                }}
-              />
-              <span
-                className="hidden h-16 w-16 items-center justify-center rounded-full text-3xl"
-                style={{
-                  border: "2.5px solid #F97316",
-                  boxShadow:
-                    "0 0 0 4px rgba(249,115,22,0.12), 0 0 20px rgba(249,115,22,0.35)",
-                  background: "#fff7ed",
-                }}
-              >
-                🎃
-              </span>
-            </span>
+            <img src={scottyLogo} alt="Scotty Pumpkin" className="h-24" />
 
             {/* Label beneath logo */}
             <span className="flex flex-col items-center leading-tight">
-              <span
-                className="text-xs font-semibold uppercase tracking-widest"
-                style={{
-                  color: "rgba(194,87,10,0.55)",
-                  letterSpacing: "0.12em",
-                }}
-              >
+              <span className="text-xs font-semibold uppercase tracking-widest">
                 Part of the
               </span>
-              <span
-                className="text-sm font-bold transition-colors duration-200 group-hover:text-orange-600"
-                style={{ color: "#C2570A" }}
-              >
+              <span className="text-sm font-bold text-orange-600">
                 Scotty Pumpkin Web3 Ecosystem
               </span>
             </span>
           </a>
 
-          {/* Title */}
-          <h1 className="mt-6 text-balance text-center font-sora text-4xl font-bold md:text-6xl">
-            Bfinit
-          </h1>
-
           {/* Subtitle */}
-          <p className="mt-3 text-balance text-center font-sora text-lg font-medium text-dark/70 md:text-2xl">
+          <p className="mt-6 text-balance text-center font-sora text-lg font-medium text-dark/70 md:text-2xl">
             Build, sell & market your business within the{" "}
             <span className="relative inline-block">
               <span className="relative z-10 px-1">
